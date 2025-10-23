@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table>
+        @if(meubles.length > 0) {
+          <tr>
+            <th>N°</th>
+            <th>ID</th>
+            <th>Nom du meuble</th>
+            <th>Description</th>
+            <th>Prix (DT)</th>
+            <th>materiau</th>
+            <th>Actions</th>
+          </tr>
+        }
+
+        @for (meuble of meubles; track meuble.idmeuble; let index = $index) {
+          <tbody>
+            <tr>
+              <td>{{ index + 1 }}</td>
+              <td>{{ meuble.idmeuble }}</td>
+              <td>{{ meuble.nommeuble }}</td>
+              <td>{{ meuble.description }}</td>
+              <td>{{ meuble.prix }}</td>
+              <td>{{ meuble.materiau.nommateriau }}</td>
+
+              <td>
+                <a class="btn btn-danger" (click)="supprimermeuble(meuble)">
+                  Supprimer
+                </a>
+              </td>
+              <td>
+                <a class="btn btn-success" [routerLink]="['/updatemeuble', meuble.idmeuble]">
+                  Modifier
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        }
+
+        @empty {
+          <h1>Aucun meuble trouvé !</h1>
+        }
+      </table>
+    </div>
+  </div>
+</div>

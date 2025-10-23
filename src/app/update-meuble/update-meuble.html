@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Modifier un Meuble :</h2>
+  <form>
+    <div class="col-sm-2">
+      <label>ID Meuble</label>
+      <input type="text" [(ngModel)]="currentMeuble.idmeuble" name="idmeuble" class="form-control" disabled>
+    </div>
+
+    <div class="col-sm-4">
+      <label>Nom Meuble</label>
+      <input type="text" [(ngModel)]="currentMeuble.nommeuble" name="nommeuble" class="form-control">
+    </div>
+
+    <div class="col-sm-6">
+      <label>Description</label>
+      <input type="text" [(ngModel)]="currentMeuble.description" name="description" class="form-control">
+    </div>
+
+    <div class="col-sm-2">
+      <label>Prix (DT)</label>
+      <input type="number" [(ngModel)]="currentMeuble.prix" name="prix" class="form-control">
+    </div>
+
+    <div class="col-sm-4">
+      <label>materiau</label>
+      <select [(ngModel)]="currentMateriauId" name="idmateriau" class="form-control form-control-lg">
+        @for(cat of materiaus; track cat.idmateriau) {
+          <option [value]="cat.idmateriau">{{ cat.nommateriau }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" (click)="updateMeuble()" class="btn btn-success">Modifier</button>
+    </div>
+  </form>
+</div>
